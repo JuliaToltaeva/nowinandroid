@@ -94,4 +94,5 @@ class ComposeTests : TestCase(Kaspresso.Builder.withComposeSupport()) {
             }
         }
     }
+
 }

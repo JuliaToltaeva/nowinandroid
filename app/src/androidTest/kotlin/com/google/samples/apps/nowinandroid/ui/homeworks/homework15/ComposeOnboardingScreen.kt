@@ -39,5 +39,4 @@ class ComposeOnboardingScreen(semanticsProvider: SemanticsNodeInteractionsProvid
         hasTestTag(C.NIA_TOP_APP_BAR_NAVIGATION_BUTTON)
         useUnmergedTree = true
     }
-
 }

@@ -26,4 +26,5 @@ class ComposeSearchScreen(semanticsProvider: SemanticsNodeInteractionsProvider) 
     val toolbarTextField = KNode(semanticsProvider) {
         hasTestTag("SearchTextField")
     }
+
 }
