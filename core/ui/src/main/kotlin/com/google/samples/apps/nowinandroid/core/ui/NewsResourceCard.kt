@@ -208,7 +208,8 @@ fun NewsResourceHeaderImage(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(180.dp),
+                .height(180.dp)
+                .testTag("newsFeedImage"),
             contentScale = ContentScale.Crop,
             painter = if (isError.not() && !isLocalInspection) {
                 imageLoader
