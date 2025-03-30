@@ -33,66 +33,39 @@ class ComposeTests : TestCase(Kaspresso.Builder.withComposeSupport()) {
     @Test
     fun checkActionOne() {
         run {
-            step("check topBarTitle") {
-                composeOnboardingTest {
+            composeOnboardingTest {
+                step("check topBarTitle") {
                     topBarTitle.assertIsDisplayed()
                 }
-            }
-            step("check navButton") {
-                composeOnboardingTest {
+                step("check navButton") {
                     navButton.assertIsDisplayed()
                 }
-            }
-            step("check actionsButton") {
-                composeOnboardingTest {
+                step("check actionsButton") {
                     actionsButton.assertIsDisplayed()
                 }
-            }
-        }
-    }
-
-    @Test
-    fun checkActionTwo() {
-        run {
-            step("check gridTitle") {
-                composeOnboardingTest {
+                step("check gridTitle") {
                     gridTitle.assertIsDisplayed()
                 }
-            }
-            step("check gridText") {
-                composeOnboardingTest {
+                step("check gridText") {
                     gridText.assertIsDisplayed()
                 }
-            }
-            step("check done button") {
-                composeOnboardingTest {
+                step("check done button") {
                     doneButton {
                         assertTextContains("Done")
+                    }
+                }
+                step("check search button") {
+                    toolbarIconButton.assertIsDisplayed()
+                }
+                step("click toolbarIconButton") {
+                    toolbarIconButton.performClick()
+                }
+                step("check toolbarTextField") {
+                    composeSearchTest {
+                        toolbarTextField.assertIsDisplayed()
                     }
                 }
             }
         }
     }
-
-    @Test
-    fun checkActionThree() {
-        run {
-            step("check search button") {
-                composeOnboardingTest {
-                    toolbarIconButton.assertIsDisplayed()
-                }
-            }
-            step("click toolbarIconButton") {
-                composeOnboardingTest {
-                    toolbarIconButton.performClick()
-                }
-            }
-            step("check toolbarTextField") {
-                composeSearchTest {
-                    toolbarTextField.assertIsDisplayed()
-                }
-            }
-        }
-    }
-
 }
