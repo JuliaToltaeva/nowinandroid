@@ -28,4 +28,9 @@ class NewsFeedItem(semanticNode: SemanticsNode, semanticsProvider: SemanticsNode
         hasTestTag("newsFeedImage")
         useUnmergedTree = true
     }
+    val newsResourceCardExpanded = child<KNode> {
+        hasTestTag("newsResourceCardExpanded")
+        useUnmergedTree = true
+    }
+
 }

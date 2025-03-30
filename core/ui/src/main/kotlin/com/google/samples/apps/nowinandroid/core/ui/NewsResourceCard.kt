@@ -228,7 +228,12 @@ fun NewsResourceTitle(
     newsResourceTitle: String,
     modifier: Modifier = Modifier,
 ) {
-    Text(newsResourceTitle, style = MaterialTheme.typography.headlineSmall, modifier = modifier)
+    Text(
+        newsResourceTitle,
+        style = MaterialTheme.typography.headlineSmall,
+        modifier = modifier
+            .testTag("newsFeedTitle"),
+    )
 }
 
 @Composable

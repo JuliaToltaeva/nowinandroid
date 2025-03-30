@@ -35,8 +35,20 @@ class NewsFeedListTest : TestCase(Kaspresso.Builder.withComposeSupport()) {
     @OptIn(ExperimentalTestApi::class)
     @Test
     fun checkNewsFeedScreenList() = run {
-        newsScreen.newsFeed.childAt<NewsFeedItem>(0) {
-            image.assertIsDisplayed()
+        newsScreen.newsFeed {
+            step("check image") {
+                childAt<NewsFeedItem>(0) {
+                    image.assertIsDisplayed()
+                }
+            }
+            step("check NewsResourceCardExpanded") {
+                childAt<NewsFeedItem>(0) {
+                    newsResourceCardExpanded {
+                        performScrollTo()
+                        assertIsDisplayed()
+                    }
+                }
+            }
         }
     }
 }
