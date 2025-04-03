@@ -61,44 +61,44 @@ fun LazyStaggeredGridScope.newsFeed(
         is NewsFeedUiState.Success -> {
             itemsIndexed(
                 items = feedState.feed,
-                key = { index, item -> item.id },
-                contentType = { index, item -> "newsFeedItem" },
-            ) { index, item ->
+                key = { _, item -> item.id },
+                contentType = { _, _ -> "newsFeedItem" },
+            ) { index, userNewsResource ->
                 val context = LocalContext.current
                 val analyticsHelper = LocalAnalyticsHelper.current
                 val backgroundColor = MaterialTheme.colorScheme.background.toArgb()
 
                 NewsResourceCardExpanded(
-                    userNewsResource = item,
-                    isBookmarked = item.isSaved,
+                    userNewsResource = userNewsResource,
+                    isBookmarked = userNewsResource.isSaved,
                     onClick = {
                         onExpandedCardClick()
                         analyticsHelper.logNewsResourceOpened(
-                            newsResourceId = item.id,
+                            newsResourceId = userNewsResource.id,
                         )
                         launchCustomChromeTab(
                             context,
-                            Uri.parse(item.url),
+                            Uri.parse(userNewsResource.url),
                             backgroundColor,
                         )
 
-                        onNewsResourceViewed(item.id)
+                        onNewsResourceViewed(userNewsResource.id)
                     },
-                    hasBeenViewed = item.hasBeenViewed,
+                    hasBeenViewed = userNewsResource.hasBeenViewed,
                     onToggleBookmark = {
                         onNewsResourcesCheckedChanged(
-                            item.id,
-                            !item.isSaved,
+                            userNewsResource.id,
+                            !userNewsResource.isSaved,
                         )
                     },
                     onTopicClick = onTopicClick,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
                         .animateItem()
+                        .testTag("newsResourceCardExpanded")
                         .semantics {
                             lazyListItemPosition = index
-                        }
-                        .testTag("newsResourceCardExpanded"),
+                        },
                 )
             }
         }

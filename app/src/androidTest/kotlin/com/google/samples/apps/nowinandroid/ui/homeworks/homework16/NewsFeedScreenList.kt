@@ -28,6 +28,22 @@ class NewsFeedScreenList(semanticsProvider: SemanticsNodeInteractionsProvider) :
     val newsFeed = KLazyListNode(
         semanticsProvider = semanticsProvider,
         viewBuilderAction = {
+            hasTestTag("newsFeedItem")
+        },
+        itemTypeBuilder = {
+            itemType(::NewsFeedItem)
+        },
+        positionMatcher = { position ->
+            SemanticsMatcher.expectValue(
+                LazyListItemPositionSemantics,
+                position,
+            )
+        },
+    )
+
+    val newsFeedItem = KLazyListNode(
+        semanticsProvider = semanticsProvider,
+        viewBuilderAction = {
             hasTestTag("forYou:feed")
         },
         itemTypeBuilder = {

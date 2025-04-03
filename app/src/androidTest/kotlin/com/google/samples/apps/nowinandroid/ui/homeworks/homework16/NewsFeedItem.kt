@@ -33,4 +33,8 @@ class NewsFeedItem(semanticNode: SemanticsNode, semanticsProvider: SemanticsNode
         useUnmergedTree = true
     }
 
+    val title = child<KNode> {
+        hasTestTag("newsFeedTitle")
+        useUnmergedTree = true
+    }
 }
